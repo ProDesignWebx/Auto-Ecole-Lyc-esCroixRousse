@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<!--
+  SITE CLIENT — Auto-École des Lycées Croix-Rousse (Lyon 4ème)
+  Personnalisé à partir du modèle de base (voir template-base-auto-ecole/).
+
+  À FAIRE AVANT LIVRAISON :
+    - Équipe (section #equipe) : noms/photos placeholder en attendant les vraies infos du client.
+    - Avis clients (section #avis) : notes agrégées réelles (Google 4.9/5, Vroomvroom 5/5 sur 27 avis)
+      déjà intégrées ; les 3 témoignages détaillés restent des exemples à valider/remplacer par de vrais avis.
+    - Logos Qualiopi / Label Qualité État : remplacer les badges texte par les vrais logos si le client les fournit.
+-->
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto-École des Lycées Croix-Rousse Lyon | Permis B, AAC, Code en ligne</title>
+<meta name="description" content="Auto-École des Lycées Croix-Rousse à Lyon 4ème : permis B boîte manuelle ou automatique, conduite accompagnée, code en ligne. Note 4.9/5 Google, certifiée Qualiopi. Appelez le 04 78 28 96 05.">
+<meta name="keywords" content="auto-école Lyon, auto-école Croix-Rousse, permis B Lyon, permis boîte automatique Lyon, AAC Lyon, code en ligne Lyon, auto-école Lyon 4">
+<meta property="og:title" content="Auto-École des Lycées Croix-Rousse — Exigez le meilleur">
+<meta property="og:description" content="Permis B, boîte automatique, conduite accompagnée et code en ligne à Lyon Croix-Rousse. Note 4.9/5 sur Google, certifiée Qualiopi.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%238B3A2E'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial, sans-serif' font-weight='bold' fill='%23C89A3E' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+
+<!-- Polices : Fraunces (titres, serif chaleureuse — identité propre à ce client) + Source Sans 3 (texte courant) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Données structurées SEO local -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DrivingSchool",
+  "name": "Auto-École des Lycées Croix-Rousse",
+  "image": "",
+  "telephone": "+33478289605",
+  "email": "autoecoledeslycees@orange.fr",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "63 Boulevard de la Croix-Rousse",
+    "addressLocality": "Lyon",
+    "postalCode": "69004",
+    "addressCountry": "FR"
+  },
+  "openingHours": ["Mo-Fr 14:00-19:00", "Sa 09:00-13:00"],
+  "priceRange": "€€"
+}
+</script>
+
+<style>
+  /* DA Auto-École des Lycées Croix-Rousse : terracotta + or antique, clin d'œil au nom du
+     quartier ("Rousse") et à l'héritage des canuts (soie/or) de la Croix-Rousse lyonnaise —
+     volontairement différente du bleu/ambre du modèle de base pour une identité propre au client. */
+  :root {
+    --primary: #8B3A2E;
+    --primary-dark: #5C2419;
+    --accent: #C89A3E;
+    --accent-dark: #A67D2C;
+    --bg: #FFFFFF;
+    --bg-alt: #FAF3EA;
+    --text: #2B1B14;
+    --text-muted: #7D6A5A;
+    --border: #EEE1D2;
+    --star: #C89A3E;
+    --radius: 14px;
+    --shadow: 0 4px 20px rgba(60, 30, 20, 0.08);
+    --shadow-lg: 0 12px 40px rgba(60, 30, 20, 0.14);
+    font-size: 16px;
+  }
+
+  /* Angle personnalisé animable, utilisé par la bordure en dégradé tournante du CTA header */
+  @property --gradient-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  /* Petites touches de marque : sélection de texte, barre de défilement, focus clavier */
+  ::selection { background: var(--accent); color: #2B1B14; }
+
+  html { scrollbar-color: var(--primary) var(--bg-alt); }
+  ::-webkit-scrollbar { width: 12px; }
+  ::-webkit-scrollbar-track { background: var(--bg-alt); }
+  ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 8px; border: 3px solid var(--bg-alt); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  body {
+    font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', 'Georgia', serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img, svg { display: block; max-width: 100%; }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section { padding: 88px 0; }
+
+  .section-alt { background: var(--bg-alt); }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: rgba(139, 58, 46, 0.08);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .section-head h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 12px; }
+  .section-head p { color: var(--text-muted); font-size: 1.05rem; }
+
+  /* Boutons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    min-height: 48px;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-accent {
+    background: var(--accent);
+    color: #2B1B14;
+    box-shadow: 0 6px 18px rgba(200, 154, 62, 0.35);
+  }
+  .btn-accent:hover { background: var(--accent-dark); }
+  .btn-outline {
+    background: transparent;
+    border-color: rgba(255,255,255,0.5);
+    color: #fff;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.12); }
+  .btn-outline-dark {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--text);
+  }
+  .btn-outline-dark:hover { border-color: var(--primary); color: var(--primary); }
+  .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+  /* Header */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--primary);
+  }
+  .logo-mark {
+    width: 38px; height: 38px;
+    background: var(--primary);
+    border-radius: 9px;
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .header-actions { display: flex; align-items: center; gap: 20px; }
+  .header-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1.05rem;
+    white-space: nowrap;
+    padding: 6px 12px;
+    margin: -6px -12px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .header-phone:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    background: rgba(200, 154, 62, 0.08);
+  }
+  .header-phone svg { width: 20px; height: 20px; color: var(--primary); }
+  .header-cta { white-space: nowrap; padding: 12px 20px; }
+  /* Bordure en dégradé tournante sur le CTA principal du header — couleurs de la DA (bleu confiance / ambre action).
+     Le remplissage intérieur reste l'ambre uni du bouton, seule la fine bordure tourne en continu. */
+  .header-cta.btn-accent {
+    background-image:
+      linear-gradient(var(--accent), var(--accent)),
+      conic-gradient(
+        from var(--gradient-angle),
+        var(--primary-dark) 0%,
+        var(--accent) 35%,
+        #F2D98A 50%,
+        var(--accent) 65%,
+        var(--primary-dark) 100%
+      );
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    animation: gradient-rotate 6s linear infinite;
+  }
+  .header-cta.btn-accent:hover {
+    background-image:
+      linear-gradient(var(--accent-dark), var(--accent-dark)),
+      conic-gradient(
+        from var(--gradient-angle),
+        var(--primary-dark) 0%,
+        var(--accent) 35%,
+        #F2D98A 50%,
+        var(--accent) 65%,
+        var(--primary-dark) 100%
+      );
+  }
+  @keyframes gradient-rotate {
+    to { --gradient-angle: 360deg; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .header-cta.btn-accent { animation: none; }
+  }
+
+  @media (max-width: 620px) {
+    .header-phone-text { display: none; }
+    .header-cta { padding: 12px 16px; }
+  }
+
+  /* Hero
+     Photo : Art Markiv sur Unsplash (licence Unsplash, usage commercial libre, pas d'attribution requise).
+     Placeholder pour la démo — à remplacer par une vraie photo du client (véhicule/équipe) à la livraison. */
+  .hero {
+    padding: 168px 0 130px;
+    background:
+      linear-gradient(160deg, rgba(92,36,25,0.88) 0%, rgba(139,58,46,0.82) 55%, rgba(184,92,67,0.78) 100%),
+      url('assets/hero-conduite.jpg') center 30% / cover no-repeat;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Grain fin façon bitume, plus premium qu'un motif de rayures générique */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 18px 18px;
+    pointer-events: none;
+  }
+  /* Diviseur "route" en bas du hero — ligne de marquage au sol, signature du métier */
+  .hero-road {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 64px;
+    pointer-events: none;
+    line-height: 0;
+  }
+  .hero-road svg { width: 100%; height: 100%; display: block; }
+  .hero-road .lane-dash {
+    stroke: rgba(255,255,255,0.55);
+    stroke-width: 4;
+    stroke-dasharray: 22 18;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .hero-slogan {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-size: clamp(2.3rem, 5.2vw, 3.8rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  /* Entrée en cascade du titre, mot par groupe de mots */
+  .hero h1 .reveal-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: wordIn 0.7s cubic-bezier(.16,.84,.44,1) forwards;
+  }
+  .hero h1 .reveal-word:nth-of-type(1) { animation-delay: 0.05s; }
+  .hero h1 .reveal-word:nth-of-type(2) { animation-delay: 0.22s; }
+  .hero h1 .reveal-word:nth-of-type(3) { animation-delay: 0.39s; }
+  @keyframes wordIn { to { opacity: 1; transform: translateY(0); } }
+  /* Mot clé accentué avec soulignement qui se dessine */
+  .accent-text {
+    position: relative;
+    display: inline-block;
+    color: var(--accent);
+  }
+  .accent-text::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent);
+    opacity: 0.55;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: underlineIn 0.6s ease forwards;
+    animation-delay: 1s;
+  }
+  @keyframes underlineIn { to { transform: scaleX(1); } }
+  /* Texte en dégradé pour les chiffres clés */
+  .text-gradient {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-light {
+    background: linear-gradient(90deg, #FFFFFF 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1 .reveal-word { opacity: 1; transform: none; animation: none; }
+    .accent-text::after { transform: scaleX(1); animation: none; }
+  }
+  /* Soulignement au survol pour les liens texte (footer, contact) */
+  .link-underline {
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-repeat: no-repeat;
+    background-position: left 100%;
+    background-size: 0% 2px;
+    transition: background-size 0.25s ease, color 0.25s ease;
+    padding-bottom: 2px;
+  }
+  .link-underline:hover { background-size: 100% 2px; }
+  .hero p.lead {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.88);
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 36px; }
+  .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+  .hero-stat strong { display: block; font-size: 1.7rem; font-family: 'Fraunces', serif; color: var(--accent); }
+  .hero-stat span { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+
+  .hero-card {
+    background: #fff;
+    color: var(--text);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: var(--shadow-lg);
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .hero-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .hero-card h3 { font-size: 1.15rem; margin-bottom: 18px; }
+  .hero-card ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .hero-card li { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 0.98rem; }
+  .hero-card li svg { width: 22px; height: 22px; color: #1D9E5C; flex-shrink: 0; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 140px; }
+    .hero-card { order: -1; }
+  }
+
+  /* Formations */
+  .formations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .formation-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 26px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .formation-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
+  .formation-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: rgba(139, 58, 46, 0.08);
+    color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .formation-icon.accent { background: rgba(200, 154, 62, 0.14); color: var(--accent-dark); }
+  .formation-icon svg { width: 26px; height: 26px; }
+  .formation-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+  .formation-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+  .formation-card .price-tag {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.95rem;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    width: 100%;
+  }
+
+  /* Équipe — portraits en noir & blanc qui reprennent leurs couleurs au survol (effet "wow" discret,
+     cohérent avec la discipline bicolore bleu/ambre du site plutôt qu'un effet gadget). */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+  }
+  .team-card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 2px solid transparent;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+  .team-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+  .team-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    filter: grayscale(0.9) contrast(1.05);
+    transform: scale(1.01);
+    transition: filter 0.5s ease, transform 0.5s ease;
+  }
+  .team-card:hover .team-photo img { filter: grayscale(0) contrast(1.05); transform: scale(1.07); }
+  .team-photo-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-alt);
+    border: 2px dashed var(--border);
+  }
+  .team-photo-placeholder {
+    font-family: 'Fraunces', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--border);
+  }
+  .team-badge {
+    position: absolute;
+    left: 14px; bottom: 14px;
+    background: rgba(46, 24, 16, 0.75);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .team-info { padding: 22px 24px 26px; }
+  .team-info h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .team-role { display: block; color: var(--primary); font-weight: 700; font-size: 0.85rem; margin-bottom: 12px; }
+  .team-quote { color: var(--text-muted); font-size: 0.92rem; font-style: italic; line-height: 1.5; }
+
+  /* Avis clients — photo d'ambiance (route au coucher de soleil) en arrière-plan.
+     Photo : Mohamed Maamoun sur Unsplash (licence Unsplash, usage commercial libre).
+     Overlay sombre neutre (pas de teinte bleue) pour laisser respirer les tons chauds de la photo,
+     qui font déjà écho à l'ambre de la marque — tout en gardant le texte blanc bien lisible. */
+  #avis {
+    position: relative;
+    background:
+      linear-gradient(rgba(24, 12, 8, 0.55), rgba(20, 10, 7, 0.82)),
+      url('assets/avis-bg.jpg') center 65% / cover no-repeat;
+  }
+  #avis .eyebrow { background: rgba(255, 255, 255, 0.14); color: #fff; }
+  #avis .section-head h2 { color: #fff; }
+  #avis .section-head p { color: rgba(255, 255, 255, 0.8); }
+  .avis-carousel {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+  }
+  .avis-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    padding: 4px 24px;
+    animation: avisScroll 34s linear infinite;
+  }
+  .avis-carousel:hover .avis-track { animation-play-state: paused; }
+  @keyframes avisScroll {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .avis-track { animation: none; }
+    .avis-card[aria-hidden="true"] { display: none; }
+  }
+  .avis-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 0 0 340px;
+    width: 340px;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .avis-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+  }
+  @media (max-width: 620px) {
+    .avis-card { flex: 0 0 280px; width: 280px; }
+  }
+  .avis-stars { display: flex; gap: 3px; color: var(--star); }
+  .avis-stars svg { width: 18px; height: 18px; }
+  .avis-card p.quote { color: var(--text); font-size: 0.98rem; flex-grow: 1; }
+  .avis-author { display: flex; align-items: center; gap: 12px; }
+  .avis-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-family: 'Fraunces', serif;
+    flex-shrink: 0;
+  }
+  .avis-avatar.accent { background: var(--accent); color: #2B1B14; }
+  .avis-author strong { display: block; font-size: 0.95rem; }
+  .avis-author span { font-size: 0.85rem; color: var(--text-muted); }
+
+  /* Tarifs */
+  .tarifs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    align-items: stretch;
+  }
+  .tarif-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 26px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .tarif-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
+  .tarif-card.featured {
+    border: 2px solid var(--accent);
+    box-shadow: var(--shadow-lg);
+    transform: scale(1.02);
+  }
+  .tarif-card.featured:hover { transform: scale(1.02) translateY(-4px); box-shadow: var(--shadow-lg), 0 0 0 4px rgba(200, 154, 62, 0.18); }
+  /* Halo lumineux qui suit le curseur sur le contour de la carte — couleur ambre de la DA.
+     --spot-x/--spot-y (en px, coordonnées écran) sont mis à jour en JS sur tout mouvement de souris. */
+  .tarif-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background-image: radial-gradient(
+      circle 240px at calc(var(--spot-x, -9999) * 1px) calc(var(--spot-y, -9999) * 1px),
+      rgba(200, 154, 62, 0.9), rgba(139, 58, 46, 0.5) 55%, transparent 75%
+    );
+    background-attachment: fixed;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  @media (max-width: 900px) {
+    .tarif-card::before { display: none; }
+  }
+  .tarif-badge {
+    position: absolute;
+    top: -14px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #2B1B14;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .tarif-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .tarif-card .price { font-family: 'Fraunces', serif; font-size: 2.1rem; font-weight: 800; color: var(--primary); margin: 10px 0 4px; }
+  .tarif-card .price small { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); }
+  .tarif-card ul { list-style: none; margin: 20px 0 26px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+  .tarif-card li { display: flex; gap: 10px; font-size: 0.92rem; color: var(--text-muted); align-items: flex-start; }
+  .tarif-card li svg { width: 18px; height: 18px; color: #1D9E5C; flex-shrink: 0; margin-top: 2px; }
+  .cpf-note {
+    text-align: center;
+    margin-top: 32px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+  .cpf-note strong { color: var(--primary); }
+
+  /* FAQ */
+  .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent);
+  }
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 20px 24px;
+    background: none;
+    border: none;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    gap: 16px;
+    min-height: 48px;
+  }
+  .faq-question svg { width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; transition: transform 0.2s ease; }
+  .faq-item.open .faq-question svg { transform: rotate(180deg); }
+  .faq-item.open { border-color: var(--accent); }
+  .faq-item.open .faq-question { color: var(--primary); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .faq-answer-inner { padding: 0 24px 20px; color: var(--text-muted); font-size: 0.96rem; }
+  .faq-item.open .faq-answer { max-height: 300px; }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-info-item { display: flex; gap: 14px; align-items: flex-start; }
+  .contact-info-item svg { width: 22px; height: 22px; color: var(--primary); flex-shrink: 0; margin-top: 2px; }
+  .contact-info-item strong { display: block; font-size: 0.95rem; margin-bottom: 2px; }
+  .contact-info-item span, .contact-info-item a { color: var(--text-muted); font-size: 0.95rem; }
+  .contact-info-item a:hover { color: var(--primary); }
+
+  form.contact-form {
+    background: var(--bg-alt);
+    border-radius: var(--radius);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .form-row { display: flex; flex-direction: column; gap: 6px; }
+  .form-row label { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+  .form-row input, .form-row textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 13px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+    min-height: 48px;
+  }
+  .form-row textarea { min-height: 100px; resize: vertical; }
+  .form-row input:focus, .form-row textarea:focus {
+    outline: 3px solid rgba(139, 58, 46, 0.25);
+    border-color: var(--primary);
+  }
+  .form-success {
+    display: none;
+    background: #E7F6EC;
+    color: #1D9E5C;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    align-items: center;
+    gap: 10px;
+  }
+  .form-success.show { display: flex; }
+  .form-success svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+  @media (max-width: 780px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Carte GPS — carte "stylisée" via un filtre de désaturation + une teinte couleur de marque,
+     pour que la carte (fond OpenStreetMap non personnalisable) reste cohérente avec la DA du site. */
+  .map-card {
+    margin-top: 40px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    background: #fff;
+  }
+  .map-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 21 / 6;
+  }
+  .map-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(1) contrast(1.05) brightness(1.1);
+  }
+  .map-tint {
+    position: absolute;
+    inset: 0;
+    background: var(--primary);
+    mix-blend-mode: color;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+  .map-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 22px 28px;
+  }
+  .map-info-text { display: flex; flex-direction: column; gap: 4px; }
+  .map-info-text strong { font-family: 'Fraunces', serif; font-size: 1.05rem; }
+  .map-info-text span { color: var(--text-muted); font-size: 0.92rem; }
+
+  @media (max-width: 620px) {
+    .map-frame { aspect-ratio: 4 / 3; }
+    .map-info { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* Footer */
+  footer {
+    background: #2E1810;
+    color: rgba(255,255,255,0.85);
+    padding: 56px 0 28px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.2rem; color: #fff; margin-bottom: 14px; }
+  .footer-col h4 { color: #fff; font-size: 1rem; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a, .footer-col span { color: rgba(255,255,255,0.75); font-size: 0.92rem; }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-col li { display: flex; align-items: flex-start; gap: 10px; }
+  .footer-col li svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 24px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+  }
+
+  @media (max-width: 780px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* Barre d'appel flottante mobile */
+  .mobile-call-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 99;
+    background: var(--accent);
+    padding: 12px 20px;
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.15);
+  }
+  .mobile-call-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 700;
+    color: #2B1B14;
+    font-size: 1.05rem;
+    min-height: 44px;
+  }
+  .mobile-call-bar svg { width: 22px; height: 22px; }
+
+  @media (max-width: 620px) {
+    .mobile-call-bar { display: block; }
+    body { padding-bottom: 64px; }
+    section { padding: 64px 0; }
+  }
+
+  /* Bouton WhatsApp flottant — vert de marque WhatsApp conservé volontairement (reconnaissance
+     immédiate de l'icône), seule exception à la palette bleu/ambre du site. */
+  .whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 100;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+  .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(0,0,0,0.3); }
+
+  @media (max-width: 620px) {
+    .whatsapp-float { bottom: 84px; right: 16px; width: 52px; height: 52px; }
+    .whatsapp-float svg { width: 26px; height: 26px; }
+  }
+
+  @media (max-width: 900px) {
+    section { padding: 72px 0; }
+  }
+
+  /* Apparition au scroll — désactivée si l'utilisateur préfère moins de mouvement */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(.16,.84,.44,1), transform 0.7s cubic-bezier(.16,.84,.44,1);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">CR</span>
+      Lycées Croix-Rousse
+    </a>
+    <div class="header-actions">
+      <a href="tel:+33478289605" class="header-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="header-phone-text">04 78 28 96 05</span>
+      </a>
+      <a href="tel:+33478289605" class="btn btn-accent header-cta">Appeler maintenant</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-badge">★ 4.9/5 Google · 5/5 Vroomvroom (27 avis) — Croix-Rousse, Lyon 4ème</span>
+      <p class="hero-slogan">Exigez le meilleur.</p>
+      <h1><span class="reveal-word">Passez votre permis à Lyon Croix-Rousse</span> <span class="reveal-word">avec des moniteurs qui</span> <span class="reveal-word"><span class="accent-text">s'adaptent à vous</span></span></h1>
+      <p class="lead">Permis B (boîte manuelle ou automatique), conduite accompagnée, code en ligne. Suivi personnalisé, créneaux adaptés à votre emploi du temps et tarifs transparents — sans surprise sur la facture finale.</p>
+      <div class="hero-ctas">
+        <a href="tel:+33478289605" class="btn btn-accent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          04 78 28 96 05
+        </a>
+        <a href="#tarifs" class="btn btn-outline">Voir nos tarifs</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong class="text-gradient-light" data-count="10" data-suffix=" ans">0 ans</strong><span>Auto-école Croix-Rousse</span></div>
+        <div class="hero-stat"><strong class="text-gradient-light">4.9/5</strong><span>Note Google</span></div>
+        <div class="hero-stat"><strong class="text-gradient-light">Qualiopi</strong><span>Certification qualité</span></div>
+      </div>
+    </div>
+    <div class="hero-card reveal">
+      <h3>Pourquoi la Croix-Rousse nous choisit</h3>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Tarifs affichés, aucun frais caché</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Moniteurs diplômés d'État, certifiés Qualiopi</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Acceptés même après un échec ailleurs</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code en ligne à votre rythme</li>
+      </ul>
+    </div>
+  </div>
+  <div class="hero-road" aria-hidden="true">
+    <svg viewBox="0 0 1200 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <line class="lane-dash" x1="0" y1="32" x2="1200" y2="32"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===================== FORMATIONS ===================== -->
+<section id="formations">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Nos formations</span>
+      <h2>Une formule pour chaque profil de conducteur</h2>
+      <p>Du premier cours à l'examen, on adapte le parcours à votre rythme et à votre budget.</p>
+    </div>
+    <div class="formations-grid">
+      <div class="formation-card reveal">
+        <div class="formation-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm14 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0zM5 17V9l2-4h10l2 4v8"/></svg>
+        </div>
+        <h3>Permis B boîte manuelle</h3>
+        <p>Code + conduite sur boîte manuelle, formation complète avec suivi individualisé jusqu'à l'examen.</p>
+        <span class="price-tag">Dès <span class="text-gradient">1 500 €</span></span>
+      </div>
+      <div class="formation-card reveal">
+        <div class="formation-icon accent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>Permis B boîte automatique (B78)</h3>
+        <p>Formation sur véhicule automatique, idéale pour un permis plus rapide et sans stress au levier de vitesse.</p>
+        <span class="price-tag">Dès <span class="text-gradient">1 600 €</span></span>
+      </div>
+      <div class="formation-card reveal">
+        <div class="formation-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Conduite accompagnée (AAC)</h3>
+        <p>Dès 15 ans, apprentissage anticipé avec un proche pour une conduite plus sûre et une assurance moins chère ensuite.</p>
+        <span class="price-tag">Dès <span class="text-gradient">1 290 €</span></span>
+      </div>
+      <div class="formation-card reveal">
+        <div class="formation-icon accent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Conduite supervisée</h3>
+        <p>Pour les élèves majeurs qui souhaitent cumuler des heures de conduite en autonomie accompagnée, en complément de la formation classique.</p>
+        <span class="price-tag">Sur devis</span>
+      </div>
+      <div class="formation-card reveal">
+        <div class="formation-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Formules accélérées</h3>
+        <p>Formation intensive pour obtenir votre permis rapidement si votre emploi du temps est serré (études, travail, déménagement).</p>
+        <span class="price-tag">Sur devis</span>
+      </div>
+      <div class="formation-card reveal">
+        <div class="formation-icon accent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M3 13a9 9 0 1 0 3-7.7L3 8"/></svg>
+        </div>
+        <h3>Annulation de permis</h3>
+        <p>Accompagnement spécifique pour repasser votre permis après une annulation, avec un programme adapté à votre situation.</p>
+        <span class="price-tag">Sur devis</span>
+      </div>
+      <div class="formation-card reveal">
+        <div class="formation-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Permis étrangers</h3>
+        <p>Conversion ou passage du permis français pour les titulaires d'un permis étranger non reconnu en France.</p>
+        <span class="price-tag">Sur devis</span>
+      </div>
+      <div class="formation-card reveal">
+        <div class="formation-icon accent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        </div>
+        <h3>Code en ligne</h3>
+        <p>Préparez le code de la route à votre rythme, depuis chez vous, avec un accès illimité aux séries d'entraînement.</p>
+        <span class="price-tag">Sur devis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ÉQUIPE ===================== -->
+<!-- PROTOTYPE — en attente des vraies infos du client (photos, noms, rôles de l'équipe).
+     Les 3 cartes ci-dessous sont volontairement vides ("X") pour montrer l'emplacement
+     sans inventer de fausses identités. À remplacer avant mise en ligne réelle :
+       - .team-photo-empty -> <img src="assets/team-xxx.jpg" alt="..."> + retirer la classe team-photo-empty
+       - "X" (nom, rôle) -> vrais noms/rôles + citation si souhaité (voir team-quote dans le modèle de base) -->
+<section id="equipe" class="section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">L'équipe</span>
+      <h2>Les personnes qui vous accompagnent</h2>
+      <p>Des moniteurs diplômés d'État, choisis pour leur pédagogie autant que pour leur expérience. <em>(photos et présentations de l'équipe à venir)</em></p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-photo team-photo-empty">
+          <span class="team-photo-placeholder">X</span>
+        </div>
+        <div class="team-info">
+          <h3>X</h3>
+          <span class="team-role">X</span>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-photo team-photo-empty">
+          <span class="team-photo-placeholder">X</span>
+        </div>
+        <div class="team-info">
+          <h3>X</h3>
+          <span class="team-role">X</span>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-photo team-photo-empty">
+          <span class="team-photo-placeholder">X</span>
+        </div>
+        <div class="team-info">
+          <h3>X</h3>
+          <span class="team-role">X</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AVIS CLIENTS ===================== -->
+<section id="avis">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Avis élèves</span>
+      <h2>Ce que disent nos élèves à la Croix-Rousse</h2>
+      <p>Note 4.9/5 sur Google et 5/5 sur Vroomvroom (27 avis vérifiés).</p>
+    </div>
+  </div>
+  <!-- Carrousel défilant en continu ; le 2e jeu de cartes (aria-hidden) est une copie exacte
+       du premier, utilisée uniquement pour boucler sans saut visible. -->
+  <div class="avis-carousel reveal">
+    <div class="avis-track">
+      <div class="avis-card">
+        <div class="avis-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="quote">"Mon moniteur était hyper patient, j'avais vraiment le trac au début. J'ai eu mon permis du premier coup après 2 mois."</p>
+        <div class="avis-author">
+          <div class="avis-avatar">L</div>
+          <div><strong>Léa M.</strong><span>Permis B — Croix-Rousse, Lyon</span></div>
+        </div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="quote">"Les tarifs sont clairs dès le départ, pas de mauvaise surprise contrairement à mon ancienne auto-école. Créneaux le samedi au top."</p>
+        <div class="avis-author">
+          <div class="avis-avatar accent">T</div>
+          <div><strong>Thomas R.</strong><span>Boîte automatique B78 — Lyon 4ème</span></div>
+        </div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="quote">"Ma fille a fait la conduite accompagnée avec eux, super suivi et bons conseils pour nous les parents aussi. Je recommande."</p>
+        <div class="avis-author">
+          <div class="avis-avatar">S</div>
+          <div><strong>Sophie D.</strong><span>Conduite accompagnée — parent d'élève</span></div>
+        </div>
+      </div>
+      <!-- Copie pour la boucle continue (masquée aux lecteurs d'écran) -->
+      <div class="avis-card" aria-hidden="true">
+        <div class="avis-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="quote">"Mon moniteur était hyper patient, j'avais vraiment le trac au début. J'ai eu mon permis du premier coup après 2 mois."</p>
+        <div class="avis-author">
+          <div class="avis-avatar">L</div>
+          <div><strong>Léa M.</strong><span>Permis B — Croix-Rousse, Lyon</span></div>
+        </div>
+      </div>
+      <div class="avis-card" aria-hidden="true">
+        <div class="avis-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="quote">"Les tarifs sont clairs dès le départ, pas de mauvaise surprise contrairement à mon ancienne auto-école. Créneaux le samedi au top."</p>
+        <div class="avis-author">
+          <div class="avis-avatar accent">T</div>
+          <div><strong>Thomas R.</strong><span>Boîte automatique B78 — Lyon 4ème</span></div>
+        </div>
+      </div>
+      <div class="avis-card" aria-hidden="true">
+        <div class="avis-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="quote">"Ma fille a fait la conduite accompagnée avec eux, super suivi et bons conseils pour nous les parents aussi. Je recommande."</p>
+        <div class="avis-author">
+          <div class="avis-avatar">S</div>
+          <div><strong>Sophie D.</strong><span>Conduite accompagnée — parent d'élève</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TARIFS ===================== -->
+<section id="tarifs">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Tarifs</span>
+      <h2>Des prix clairs, sans surprise</h2>
+      <p>Tout est indiqué à l'avance : heures de conduite incluses, présentation à l'examen, livret.</p>
+    </div>
+    <div class="tarifs-grid">
+      <div class="tarif-card reveal">
+        <h3>Conduite accompagnée</h3>
+        <div class="price"><span class="text-gradient">1 290 €</span> <small>/ forfait</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code de la route illimité</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 20h de conduite avec moniteur</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Rendez-vous pédagogiques inclus</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dès 15 ans</li>
+        </ul>
+        <a href="tel:+33478289605" class="btn btn-outline-dark">Nous appeler</a>
+      </div>
+      <div class="tarif-card featured reveal">
+        <span class="tarif-badge">Le plus choisi</span>
+        <h3>Permis B boîte manuelle</h3>
+        <div class="price"><span class="text-gradient">1 500 €</span> <small>/ forfait</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code de la route illimité</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 20h de conduite (ajustable selon niveau)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Présentation à l'examen incluse</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Financable via CPF</li>
+        </ul>
+        <a href="tel:+33478289605" class="btn btn-accent">Nous appeler</a>
+      </div>
+      <div class="tarif-card reveal">
+        <h3>Permis B boîte automatique (B78)</h3>
+        <div class="price"><span class="text-gradient">1 600 €</span> <small>/ forfait</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code de la route illimité</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 13h de conduite sur boîte auto</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Formation accélérée possible</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Financable via CPF</li>
+        </ul>
+        <a href="tel:+33478289605" class="btn btn-outline-dark">Nous appeler</a>
+      </div>
+    </div>
+    <p class="cpf-note">💳 Toutes nos formations permis B sont éligibles au <strong>Compte Personnel de Formation (CPF)</strong> — demandez-nous un devis personnalisé.</p>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Vos questions, nos réponses</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" type="button">
+          Combien de temps faut-il pour obtenir le permis ?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">En moyenne 2 à 4 mois pour le permis B boîte manuelle selon votre disponibilité et le nombre d'heures de conduite nécessaires. Pour nos formules accélérées ou en boîte automatique, comptez souvent 4 à 6 semaines.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" type="button">
+          Le CPF peut-il financer ma formation ?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Oui, nos formations au permis B (boîte manuelle et automatique) sont éligibles au Compte Personnel de Formation. Nous vous accompagnons dans les démarches sur MonCompteFormation pour mobiliser vos droits.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" type="button">
+          Que se passe-t-il si j'échoue à l'examen ?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Vous bénéficiez d'un bilan personnalisé avec votre moniteur et de leçons de perfectionnement ciblées sur vos points faibles avant de repasser l'examen dès que possible, sans repartir de zéro. Nous acceptons aussi les candidats ayant déjà échoué dans une autre auto-école — une pratique rare à Lyon, mais nous pensons que chaque élève mérite un nouveau départ.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" type="button">
+          Combien d'heures de conduite sont incluses dans le forfait ?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Le forfait permis B boîte manuelle inclut 20h de conduite, ajustables selon votre niveau après l'évaluation de départ. Des heures supplémentaires peuvent être ajoutées à tout moment si besoin, sans engagement.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" type="button">
+          Puis-je choisir mes créneaux de conduite ?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Oui. Nous sommes ouverts tous les jours en semaine de 14h à 19h, et le samedi matin de 9h à 13h (fermé le dimanche), avec des moniteurs flexibles sur les disponibilités — pratique pour les lycéens et étudiants du quartier. Vous réservez vos leçons directement avec votre moniteur selon ses créneaux.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="container">
+  <div class="contact-grid">
+    <div>
+      <span class="eyebrow">Contact</span>
+      <h2 style="margin-bottom: 20px;">Parlons de votre projet de permis</h2>
+      <div class="contact-info reveal">
+        <div class="contact-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><strong>Téléphone</strong><a href="tel:+33478289605" class="link-underline">04 78 28 96 05</a></div>
+        </div>
+        <div class="contact-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+          <div><strong>Email</strong><a href="mailto:autoecoledeslycees@orange.fr" class="link-underline">autoecoledeslycees@orange.fr</a></div>
+        </div>
+        <div class="contact-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><strong>Adresse</strong><span>63 Boulevard de la Croix-Rousse, 69004 Lyon</span></div>
+        </div>
+        <div class="contact-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><strong>Horaires</strong><span>Lun–Ven 14h–19h · Sam 9h–13h · Dim fermé</span></div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form reveal" id="contactForm">
+      <div class="form-row">
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom">
+      </div>
+      <div class="form-row">
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" name="telephone" required placeholder="06 XX XX XX XX">
+      </div>
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Dites-nous en plus sur votre projet (formule souhaitée, disponibilités...)"></textarea>
+      </div>
+      <button type="submit" class="btn btn-accent">Demander un devis gratuit</button>
+      <div class="form-success" id="formSuccess">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Merci ! Nous vous rappelons sous 24h.
+      </div>
+    </form>
+  </div>
+
+  <!-- CARTE GPS — Google Maps intégré (demandé par le client), sans clé API : format /maps?q=...&output=embed.
+       Pour une autre adresse, remplacer la query dans le src de l'iframe et dans le lien "Itinéraire". -->
+  <div class="map-card reveal">
+    <div class="map-frame">
+      <div class="map-tint" aria-hidden="true"></div>
+      <iframe
+        src="https://www.google.com/maps?q=63+Boulevard+de+la+Croix-Rousse%2C+69004+Lyon&output=embed"
+        title="Localisation Auto-École des Lycées Croix-Rousse sur la carte"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="map-info">
+      <div class="map-info-text">
+        <strong>Auto-École des Lycées Croix-Rousse</strong>
+        <span>63 Boulevard de la Croix-Rousse, 69004 Lyon</span>
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=63+Boulevard+de+la+Croix-Rousse+69004+Lyon" target="_blank" rel="noopener" class="btn btn-outline-dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Itinéraire
+      </a>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="logo-mark" style="background: var(--accent); color: #2B1B14;">CR</span>
+          Auto-École des Lycées Croix-Rousse
+        </div>
+        <p style="font-size: 0.92rem; max-width: 320px;">Exigez le meilleur. Depuis plus de 10 ans dans le quartier Croix-Rousse à Lyon. Permis B (manuelle ou automatique), conduite accompagnée et code en ligne avec des moniteurs diplômés d'État — certifiés Qualiopi.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Formations</h4>
+        <ul>
+          <li><a href="#formations" class="link-underline">Permis B boîte manuelle</a></li>
+          <li><a href="#formations" class="link-underline">Permis B boîte automatique (B78)</a></li>
+          <li><a href="#formations" class="link-underline">Conduite accompagnée (AAC)</a></li>
+          <li><a href="#formations" class="link-underline">Formules accélérées</a></li>
+          <li><a href="#formations" class="link-underline">Code en ligne</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 63 Boulevard de la Croix-Rousse, 69004 Lyon</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 04 78 28 96 05</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg> autoecoledeslycees@orange.fr</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Auto-École des Lycées Croix-Rousse — Lyon 4ème. Tous droits réservés.
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== BARRE D'APPEL FLOTTANTE (MOBILE) ===================== -->
+<div class="mobile-call-bar">
+  <a href="tel:+33478289605">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Appeler maintenant — 04 78 28 96 05
+  </a>
+</div>
+
+<!-- ===================== BOUTON WHATSAPP FLOTTANT ===================== -->
+<!-- Relié au mobile 06 13 06 55 35. Pour un autre client, remplacer le numéro dans le lien wa.me (indicatif 33 + numéro sans le 0). -->
+<a class="whatsapp-float" href="https://wa.me/33613065535?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20formations." target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.362.687 4.564 1.875 6.417L4 29l7.762-1.845A11.94 11.94 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm0 21.818a9.78 9.78 0 0 1-4.997-1.367l-.358-.213-3.71.883.888-3.615-.234-.372A9.78 9.78 0 0 1 6.182 15c0-5.418 4.401-9.818 9.819-9.818S25.818 9.582 25.818 15 21.419 24.818 16.001 24.818zm5.42-7.34c-.297-.148-1.758-.867-2.03-.966-.272-.099-.47-.148-.669.148-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.148-1.254-.462-2.388-1.472-.883-.787-1.48-1.76-1.653-2.057-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.52.148-.173.198-.297.297-.495.099-.198.05-.372-.025-.52-.074-.148-.669-1.612-.917-2.208-.242-.582-.487-.503-.669-.512l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.48s1.065 2.876 1.213 3.074c.148.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.693.626.711.226 1.359.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+</a>
+
+<script>
+  // Halo lumineux des cartes tarifs : position du curseur partagée via des variables CSS globales
+  (function () {
+    var tarifCards = document.querySelectorAll('.tarif-card');
+    if (!tarifCards.length || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    document.addEventListener('pointermove', function (e) {
+      document.documentElement.style.setProperty('--spot-x', e.clientX);
+      document.documentElement.style.setProperty('--spot-y', e.clientY);
+    });
+  })();
+
+  // Accordéon FAQ
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var question = item.querySelector('.faq-question');
+    question.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (open) { open.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Formulaire de contact : à brancher sur un vrai backend (Formspree, EmailJS, etc.)
+  // avant mise en production. Ici, confirmation visuelle simple pour la démo.
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('formSuccess').classList.add('show');
+    this.reset();
+  });
+
+  // Apparition progressive au scroll, avec effet cascade par groupe de frères/sœurs.
+  // Une fois l'animation d'entrée terminée, on retire les classes reveal/is-visible :
+  // sinon leur "transform: translateY(0)" fige la carte et bloque les effets de survol
+  // (translateY au hover) qui ont la même priorité CSS mais sont définis plus haut dans la feuille de style.
+  function clearRevealAfterTransition(el) {
+    el.addEventListener('transitionend', function handler(e) {
+      if (e.propertyName === 'transform') {
+        el.classList.remove('reveal', 'is-visible');
+        el.style.transitionDelay = '';
+        el.removeEventListener('transitionend', handler);
+      }
+    });
+  }
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.remove('reveal', 'is-visible'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          clearRevealAfterTransition(entry.target);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function (el) {
+      var siblings = Array.prototype.filter.call(el.parentElement.children, function (c) { return c.classList.contains('reveal'); });
+      var index = siblings.indexOf(el);
+      el.style.transitionDelay = Math.min(index, 4) * 70 + 'ms';
+      revealObserver.observe(el);
+    });
+  }
+
+  // Compteur animé sur les statistiques du hero (92%, 15j)
+  document.querySelectorAll('[data-count]').forEach(function (el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (prefersReducedMotion) {
+      el.textContent = target + suffix;
+      return;
+    }
+    var start = null;
+    var duration = 1200;
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+</script>
+
+</body>
+</html>
