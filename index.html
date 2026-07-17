@@ -245,7 +245,6 @@
       );
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
-    animation: gradient-rotate 6s linear infinite;
   }
   .header-cta.btn-accent:hover {
     background-image:
@@ -258,12 +257,13 @@
         var(--accent) 65%,
         var(--primary-dark) 100%
       );
+    animation: gradient-rotate 1.4s linear infinite;
   }
   @keyframes gradient-rotate {
     to { --gradient-angle: 360deg; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .header-cta.btn-accent { animation: none; }
+    .header-cta.btn-accent:hover { animation: none; }
   }
 
   @media (max-width: 620px) {
@@ -432,42 +432,6 @@
     .hero-grid { grid-template-columns: 1fr; }
     .hero { padding-top: 140px; }
     .hero-card { order: -1; }
-  }
-
-  /* Formations */
-  .formations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-  }
-  .formation-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px 26px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-  .formation-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
-  .formation-icon {
-    width: 52px; height: 52px;
-    border-radius: 12px;
-    background: rgba(139, 58, 46, 0.08);
-    color: var(--primary);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 18px;
-  }
-  .formation-icon.accent { background: rgba(200, 154, 62, 0.14); color: var(--accent-dark); }
-  .formation-icon svg { width: 26px; height: 26px; }
-  .formation-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
-  .formation-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
-  .formation-card .price-tag {
-    display: inline-block;
-    font-weight: 700;
-    color: var(--primary);
-    font-size: 0.95rem;
-    border-top: 1px solid var(--border);
-    padding-top: 14px;
-    width: 100%;
   }
 
   /* Équipe — portraits en noir & blanc qui reprennent leurs couleurs au survol (effet "wow" discret,
@@ -976,82 +940,6 @@
   </div>
 </section>
 
-<!-- ===================== FORMATIONS ===================== -->
-<section id="formations">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Nos formations</span>
-      <h2>Une formule pour chaque profil de conducteur</h2>
-      <p>Du premier cours à l'examen, on adapte le parcours à votre rythme et à votre budget.</p>
-    </div>
-    <div class="formations-grid">
-      <div class="formation-card reveal">
-        <div class="formation-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm14 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0zM5 17V9l2-4h10l2 4v8"/></svg>
-        </div>
-        <h3>Permis B boîte manuelle</h3>
-        <p>Code + conduite sur boîte manuelle, formation complète avec suivi individualisé jusqu'à l'examen.</p>
-        <span class="price-tag">Dès <span class="text-gradient">1 500 €</span></span>
-      </div>
-      <div class="formation-card reveal">
-        <div class="formation-icon accent">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-        </div>
-        <h3>Permis B boîte automatique (B78)</h3>
-        <p>Formation sur véhicule automatique, idéale pour un permis plus rapide et sans stress au levier de vitesse.</p>
-        <span class="price-tag">Dès <span class="text-gradient">1 600 €</span></span>
-      </div>
-      <div class="formation-card reveal">
-        <div class="formation-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3>Conduite accompagnée (AAC)</h3>
-        <p>Dès 15 ans, apprentissage anticipé avec un proche pour une conduite plus sûre et une assurance moins chère ensuite.</p>
-        <span class="price-tag">Dès <span class="text-gradient">1 290 €</span></span>
-      </div>
-      <div class="formation-card reveal">
-        <div class="formation-icon accent">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-        </div>
-        <h3>Conduite supervisée</h3>
-        <p>Pour les élèves majeurs qui souhaitent cumuler des heures de conduite en autonomie accompagnée, en complément de la formation classique.</p>
-        <span class="price-tag">Sur devis</span>
-      </div>
-      <div class="formation-card reveal">
-        <div class="formation-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <h3>Formules accélérées</h3>
-        <p>Formation intensive pour obtenir votre permis rapidement si votre emploi du temps est serré (études, travail, déménagement).</p>
-        <span class="price-tag">Sur devis</span>
-      </div>
-      <div class="formation-card reveal">
-        <div class="formation-icon accent">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M3 13a9 9 0 1 0 3-7.7L3 8"/></svg>
-        </div>
-        <h3>Annulation de permis</h3>
-        <p>Accompagnement spécifique pour repasser votre permis après une annulation, avec un programme adapté à votre situation.</p>
-        <span class="price-tag">Sur devis</span>
-      </div>
-      <div class="formation-card reveal">
-        <div class="formation-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3>Permis étrangers</h3>
-        <p>Conversion ou passage du permis français pour les titulaires d'un permis étranger non reconnu en France.</p>
-        <span class="price-tag">Sur devis</span>
-      </div>
-      <div class="formation-card reveal">
-        <div class="formation-icon accent">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-        </div>
-        <h3>Code en ligne</h3>
-        <p>Préparez le code de la route à votre rythme, depuis chez vous, avec un accès illimité aux séries d'entraînement.</p>
-        <span class="price-tag">Sur devis</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ===================== ÉQUIPE ===================== -->
 <!-- PROTOTYPE — en attente des vraies infos du client (photos, noms, rôles de l'équipe).
@@ -1204,47 +1092,67 @@
 <section id="tarifs">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">Tarifs</span>
+      <span class="eyebrow">Formations & tarifs</span>
       <h2>Des prix clairs, sans surprise</h2>
       <p>Tout est indiqué à l'avance : heures de conduite incluses, présentation à l'examen, livret.</p>
     </div>
     <div class="tarifs-grid">
       <div class="tarif-card reveal">
-        <h3>Conduite accompagnée</h3>
+        <h3>Code en ligne</h3>
+        <div class="price"><span class="text-gradient">90 €</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Accès code par internet</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Séries thématiques et d'entraînement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Examen blanc + suivi personnalisé</li>
+        </ul>
+        <a href="tel:+33478289605" class="btn btn-outline-dark">Nous appeler</a>
+      </div>
+      <div class="tarif-card reveal">
+        <h3>Permis B boîte automatique (B78)</h3>
         <div class="price"><span class="text-gradient">1 290 €</span> <small>/ forfait</small></div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code de la route illimité</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 20h de conduite avec moniteur</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Rendez-vous pédagogiques inclus</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dès 15 ans</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code de la route illimité (accès internet)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 13h de conduite sur boîte auto</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1 accompagnement à l'examen offert</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Heure de conduite sup. : 62€</li>
         </ul>
         <a href="tel:+33478289605" class="btn btn-outline-dark">Nous appeler</a>
       </div>
       <div class="tarif-card featured reveal">
         <span class="tarif-badge">Le plus choisi</span>
         <h3>Permis B boîte manuelle</h3>
-        <div class="price"><span class="text-gradient">1 500 €</span> <small>/ forfait</small></div>
+        <div class="price"><span class="text-gradient">1 390 €</span> <small>/ forfait</small></div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code de la route illimité</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 20h de conduite (ajustable selon niveau)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Présentation à l'examen incluse</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Financable via CPF</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code de la route illimité (accès internet)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 20h de conduite avec moniteur</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1 accompagnement à l'examen offert</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Financable via CPF ou permis à 1€/jour</li>
         </ul>
         <a href="tel:+33478289605" class="btn btn-accent">Nous appeler</a>
       </div>
       <div class="tarif-card reveal">
-        <h3>Permis B boîte automatique (B78)</h3>
-        <div class="price"><span class="text-gradient">1 600 €</span> <small>/ forfait</small></div>
+        <h3>Conduite accompagnée (AAC)</h3>
+        <div class="price"><span class="text-gradient">1 590 €</span> <small>/ forfait</small></div>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code de la route illimité</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 13h de conduite sur boîte auto</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Formation accélérée possible</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Financable via CPF</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Code de la route illimité (accès internet)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 20h de conduite + RDV préalable et pédagogique</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Dès 15 ans</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Heure de conduite sup. : 62€</li>
+        </ul>
+        <a href="tel:+33478289605" class="btn btn-outline-dark">Nous appeler</a>
+      </div>
+      <div class="tarif-card reveal">
+        <h3>Passerelle boîte auto → manuelle</h3>
+        <div class="price"><span class="text-gradient">434 €</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Déjà titulaire du permis B78 ?</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 7h de formation individuelle</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Sans repasser l'examen pratique</li>
         </ul>
         <a href="tel:+33478289605" class="btn btn-outline-dark">Nous appeler</a>
       </div>
     </div>
-    <p class="cpf-note">💳 Toutes nos formations permis B sont éligibles au <strong>Compte Personnel de Formation (CPF)</strong> — demandez-nous un devis personnalisé.</p>
+    <p class="cpf-note">💳 Financement CPF, permis à 1€/jour, paiement en 3x sans frais, chèque ou espèces acceptés — <strong>demandez-nous un devis personnalisé</strong>.<br>Conduite supervisée et formules accélérées disponibles sur demande, en agence.</p>
   </div>
 </section>
 
@@ -1382,11 +1290,11 @@
       <div class="footer-col">
         <h4>Formations</h4>
         <ul>
-          <li><a href="#formations" class="link-underline">Permis B boîte manuelle</a></li>
-          <li><a href="#formations" class="link-underline">Permis B boîte automatique (B78)</a></li>
-          <li><a href="#formations" class="link-underline">Conduite accompagnée (AAC)</a></li>
-          <li><a href="#formations" class="link-underline">Formules accélérées</a></li>
-          <li><a href="#formations" class="link-underline">Code en ligne</a></li>
+          <li><a href="#tarifs" class="link-underline">Permis B boîte manuelle</a></li>
+          <li><a href="#tarifs" class="link-underline">Permis B boîte automatique (B78)</a></li>
+          <li><a href="#tarifs" class="link-underline">Conduite accompagnée (AAC)</a></li>
+          <li><a href="#tarifs" class="link-underline">Code en ligne</a></li>
+          <li><a href="#tarifs" class="link-underline">Passerelle boîte auto → manuelle</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1399,7 +1307,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      © 2026 Auto-École des Lycées Croix-Rousse — Lyon 4ème. Tous droits réservés.
+      © 2026 Auto-École des Lycées Croix-Rousse — Lyon 4ème. Tous droits réservés.<br>
+      SASU BDC · SIRET 898 542 568 00024 · Agrément préfectoral n° E 22 069 0007 0 (Préfet du Rhône)
     </div>
   </div>
 </footer>
